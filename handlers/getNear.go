@@ -20,11 +20,11 @@ func GetNearHandler(ctx *fasthttp.RequestCtx) {
 	defer db.Close()
 
     var stations []models.StationModel
-    sql := "select distinct(st_name) from line_station where "+
+    sql := "select st_name,st_lat,st_lon from line_station where "+
 	" st_lat > ?-1 and "+
 	" st_lat < ?+1 and "+
 	" st_lon > ?-1 and "+
-	" st_lon < ?+1 "+
+	" st_lon < ?+1 group by st_name"+
 	" order by ACOS(SIN((? * 3.1415) / 180 ) *SIN((st_lat * 3.1415) / 180 ) +COS((? * 3.1415) / 180 ) * COS((st_lat * 3.1415) / 180 ) *COS((?* 3.1415) / 180 - (st_lon * 3.1415) / 180 ) ) * 6380 asc limit 10"
 
 	//fmt.Println("sql is,", sql,lat,lon)
@@ -34,7 +34,7 @@ func GetNearHandler(ctx *fasthttp.RequestCtx) {
 	//循环计算每个站台经过的线路
 	for i:=0; i<len(stations);i++  {
 		var passlines []models.LineModel
-		db.Raw("select line_station.line_id,`lines`.line_name from line_station left join `lines` on line_station.line_id=`lines`.line_id where st_name=? GROUP BY line_id,line_name",stations[i].StName).Find(&passlines)
+		db.Raw("select line_station.line_id,`lines`.line_name from line_station left join `lines` on line_station.line_name=`lines`.line_name where st_name=? GROUP BY line_name",stations[i].StName).Find(&passlines)
 		stations[i].PassLines = passlines
 	}
 
