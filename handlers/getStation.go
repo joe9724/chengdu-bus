@@ -6,8 +6,8 @@ import (
 	"io/ioutil"
 	"fmt"
 	"encoding/json"
-	"shanghai-bus/models"
-	_var"shanghai-bus/var"
+	"chengdu-bus/models"
+	_var"chengdu-bus/var"
 	_"github.com/jinzhu/gorm"
 	_"github.com/jinzhu/gorm/dialects/mysql"
 )

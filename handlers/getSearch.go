@@ -4,8 +4,8 @@ import (
 	_"github.com/jinzhu/gorm"
 	_"github.com/jinzhu/gorm/dialects/mysql"
 	"github.com/valyala/fasthttp"
-	_var "shanghai-bus/var"
-	"shanghai-bus/models"
+	_var "chengdu-bus/var"
+	"chengdu-bus/models"
 	"fmt"
 	"encoding/json"
 )

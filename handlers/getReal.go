@@ -4,11 +4,11 @@ import (
 	"github.com/valyala/fasthttp"
 	"net/http"
 	"io/ioutil"
-	"shanghai-bus/models"
+	"chengdu-bus/models"
 	"fmt"
 	"github.com/json-iterator/go"
 	"encoding/json"
-	_var"shanghai-bus/var"
+	_var"chengdu-bus/var"
 )
 var jsonf = jsoniter.ConfigCompatibleWithStandardLibrary
 func GetRealHandler(ctx *fasthttp.RequestCtx) {

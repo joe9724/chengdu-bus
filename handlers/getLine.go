@@ -6,8 +6,8 @@ import (
 	//"github.com/json-iterator/go"
 	_"github.com/jinzhu/gorm"
 	_"github.com/jinzhu/gorm/dialects/mysql"
-	_var"shanghai-bus/var"
-	"shanghai-bus/models"
+	_var"chengdu-bus/var"
+	"chengdu-bus/models"
 	"encoding/json"
 )
 
